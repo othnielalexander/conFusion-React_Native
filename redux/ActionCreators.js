@@ -154,3 +154,50 @@ export const addLeaders = (leaders) => ({
   type: ActionTypes.ADD_LEADERS,
   payload: leaders,
 });
+
+export const postFavorite = (dishId) => (dispatch) => {
+  dispatch(addFavorite(dishId));
+  // setTimeout(() => {
+  //
+  // }, 500); // This is to set Delay
+};
+
+export const addFavorite = (dishId) => ({
+  type: ActionTypes.ADD_FAVORITE,
+  payload: dishId,
+});
+
+// removing favourite
+export const deleteFavorite = (dishId) => (dispatch) => {
+  setTimeout(() => {
+    dispatch(removeFavorite(dishId));
+  }, 500);
+};
+
+export const removeFavorite = (dishId) => ({
+  type: ActionTypes.REMOVE_FAVORITE,
+  payload: dishId,
+});
+
+export const deleteFavoriteSwipeout = (dishId) => ({
+  type: ActionTypes.DELETE_FAVORITE,
+  payload: dishId,
+});
+
+export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+  const newComment = {
+    dishId: dishId,
+    rating: rating,
+    author: author,
+    comment: comment,
+  };
+  newComment.date = new Date().toISOString();
+  setTimeout(() => {
+    dispatch(addComment(newComment));
+  }, 2000);
+};
+
+export const addComment = (comment) => ({
+  type: ActionTypes.ADD_COMMENT,
+  payload: comment,
+});
